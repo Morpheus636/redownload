@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "replaceme"
+name = "redownload"
 version = "0.1.0"
 description = ""
 authors = ["JMT <contact@joshinshaker.com>"]
