@@ -1,6 +1,8 @@
 # Development Environment
 ## Supported Operating Systems
-For development, this project supports Linux and MacOS.
+For development, this project supports Linux and MacOS. Windows+WSL may also work.
+
+For end-users, Windows, MacOS, and Linux are supported.
 
 ## Supported Editors or IDEs
 Any code editor should work, although VSCode and Pycharm are preferred.
