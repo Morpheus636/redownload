@@ -3,6 +3,8 @@ import urllib.request
 
 import bs4
 
+from . import exceptions
+
 
 def download_from_url(url: str) -> bs4.BeautifulSoup:
     """Downloads an HTML page from a url and converts it to a BeautifulSoup object.
@@ -11,6 +13,46 @@ def download_from_url(url: str) -> bs4.BeautifulSoup:
     :return: BeautifulSoup object extracted from the url.
     """
     request = urllib.request.urlopen(url)
-    html = request.read()
-    soup = bs4.BeautifulSoup(html, features="html.parser")
-    return soup
+    html_doc = request.read()
+    html_soup = bs4.BeautifulSoup(html_doc, features="html.parser")
+    return html_soup
+
+
+def extract_links(page: bs4.BeautifulSoup, extensions: list = None) -> list:
+    """Extracts all the links with a file extension listed in the extensions param from a BeautifulSoup object and
+    returns a list of them. Raises an exception if there are no audio links in the object. If extensions is not
+    specified, returns all links on the page.
+
+    :param page: a BeautifulSoup object to extract audio links from.
+    :param extensions: OPTIONAL: a list of file extensions to filter for. If not specified, returns all links.
+    :return: a list of links to audio files ending in .flac or .mp3
+    """
+    all_links = []
+    correct_links = []
+    # Get all links on page.
+    for link in page.findAll("link"):
+        all_links.append(link.get("href"))
+    for link in page.findAll("a"):
+        all_links.append(link.get("href"))
+
+    # FIXME - Somehow there are None objects at the end of the list.
+    for link in all_links:
+        if isinstance(link, type(None)):
+            all_links.remove(link)
+
+    if extensions:
+        # Add matching links to the correct_links list
+        for link in all_links:
+            for extension in extensions:
+                if link.endswith(extension):
+                    correct_links.append(link)
+                    break
+
+    if not extensions:
+        # Add all links to the correct_links list if extensions is an empty list
+        correct_links = all_links
+
+    if not correct_links:
+        raise exceptions.NoLinksFoundInPage
+    else:
+        return correct_links
