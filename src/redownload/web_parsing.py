@@ -12,5 +12,5 @@ def download_from_url(url: str) -> bs4.BeautifulSoup:
     """
     request = urllib.request.urlopen(url)
     html = request.read()
-    soup = bs4.BeautifulSoup(html)
+    soup = bs4.BeautifulSoup(html, features="html.parser")
     return soup

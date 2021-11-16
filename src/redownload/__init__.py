@@ -1,1 +1,1 @@
-import web_parsing
+from . import web_parsing
