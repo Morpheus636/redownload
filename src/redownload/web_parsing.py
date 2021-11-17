@@ -18,33 +18,33 @@ def download_from_url(url: str) -> bs4.BeautifulSoup:
     return html_soup
 
 
-def extract_links(page: bs4.BeautifulSoup, extensions: list = None) -> list:
+def extract_links(page: bs4.BeautifulSoup, extensions: list = None) -> set:
     """Extracts all the links with a file extension listed in the extensions param from a BeautifulSoup object and
     returns a list of them. Raises an exception if there are no audio links in the object. If extensions is not
     specified, returns all links on the page.
 
     :param page: a BeautifulSoup object to extract audio links from.
     :param extensions: OPTIONAL: a list of file extensions to filter for. If not specified, returns all links.
-    :return: a list of links to audio files ending in .flac or .mp3
+    :return: a set of links to audio files ending in .flac or .mp3
     """
-    all_links = []
-    correct_links = []
+    all_links = set()
+    correct_links = set()
     # Get all links on page.
     for link in page.findAll("link"):
         href = link.get("href")
-        if href and href not in all_links:
-            all_links.append(href)
+        if href:
+            all_links.add(href)
     for link in page.findAll("a"):
         href = link.get("href")
-        if href and href not in all_links:
-            all_links.append(href)
+        if href:
+            all_links.add(href)
 
     if extensions:
         # Add matching links to the correct_links list
         for link in all_links:
             for extension in extensions:
                 if link.endswith(extension):
-                    correct_links.append(link)
+                    correct_links.add(link)
                     break
 
     if not extensions:
