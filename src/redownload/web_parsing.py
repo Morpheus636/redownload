@@ -31,14 +31,13 @@ def extract_links(page: bs4.BeautifulSoup, extensions: list = None) -> list:
     correct_links = []
     # Get all links on page.
     for link in page.findAll("link"):
-        all_links.append(link.get("href"))
+        href = link.get("href")
+        if href and href not in all_links:
+            all_links.append(href)
     for link in page.findAll("a"):
-        all_links.append(link.get("href"))
-
-    # FIXME - Somehow there are None objects at the end of the list.
-    for link in all_links:
-        if isinstance(link, type(None)):
-            all_links.remove(link)
+        href = link.get("href")
+        if href and href not in all_links:
+            all_links.append(href)
 
     if extensions:
         # Add matching links to the correct_links list
