@@ -53,6 +53,6 @@ def extract_links(page: bs4.BeautifulSoup, extensions: list = None) -> list:
         correct_links = all_links
 
     if not correct_links:
-        raise exceptions.NoLinksFoundInPage
+        raise exceptions.NoLinksFoundInPage("The page provided does not contain any links.")
     else:
         return correct_links
