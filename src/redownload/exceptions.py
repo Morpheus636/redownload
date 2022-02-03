@@ -12,7 +12,21 @@ class WebParsingException(RedownloadException):
     pass
 
 
+class DownloadsException(RedownloadException):
+    """The base exception for the downloads module. All exceptions raised by the downloads module  are
+    subclasses
+    """
+
+    pass
+
+
 class NoLinksFoundInPage(WebParsingException):
     """Exception raised by web_parsing.extract_links when no links are found in the provided BeautifulSoup object."""
+
+    pass
+
+
+class InvalidOutputDir(DownloadsException):
+    """The output directory specified in downloads.download_from_set is invalid and cannot be used."""
 
     pass
