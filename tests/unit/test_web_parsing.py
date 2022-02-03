@@ -2,6 +2,7 @@ import os
 import sys
 
 import bs4
+import pytest
 
 
 sys.path.append(os.path.relpath(__file__) + "/../src")
@@ -38,3 +39,8 @@ def test_extract_links():
         "https://archive.org/download/ptf2021-11-14.litzenberger.sbd.akg414.flac16/ptf2021-11-14t02_Theme_From_The_Bottom.mp3"
         in links
     )
+    # Test that an exception will be raised if the provided BS document has no links.
+    html_doc = ""
+    page = bs4.BeautifulSoup(html_doc, features="html.parser")
+    with pytest.raises(src.redownload.exceptions.NoLinksFoundInPage):
+        links = src.redownload.web_parsing.extract_links(page)

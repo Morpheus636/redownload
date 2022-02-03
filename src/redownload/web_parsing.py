@@ -42,10 +42,9 @@ def extract_links(page: bs4.BeautifulSoup, extensions: list = None) -> set:
     if extensions:
         # Add matching links to the correct_links list
         for link in all_links:
-            for extension in extensions:
-                if link.endswith(extension):
-                    correct_links.add(link)
-                    break
+            # if 'link' ends with any extension in extensions
+            if any(link.endswith(extension) for extension in extensions):
+                correct_links.add(link)
 
     if not extensions:
         # Add all links to the correct_links list if extensions is an empty list
