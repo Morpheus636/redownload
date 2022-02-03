@@ -9,8 +9,8 @@ sys.path.append(os.path.relpath(__file__) + "/../src")
 import src.redownload
 
 
-def test_download_from_url():
-    page = src.redownload.web_parsing.download_from_url(
+def test_html_from_url():
+    page = src.redownload.web_parsing.html_from_url(
         "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
     )
     assert type(page) == bs4.BeautifulSoup
@@ -18,7 +18,7 @@ def test_download_from_url():
 
 
 def test_extract_links():
-    page = src.redownload.web_parsing.download_from_url(
+    page = src.redownload.web_parsing.html_from_url(
         "https://archive.org/details/ptf2021-11-14.litzenberger.sbd.akg414.flac16"
     )
     # Test without passing an extensions param
