@@ -23,8 +23,7 @@ def download_from_set(urls: set, out_dir: str) -> None:
     # Download all the URLs in the set to the output dir.
     for url in urls:
         filename = url[url.rfind("/") + 1 : len(url)]
-        response = requests.get(url, stream=True)
-        with open(os.path.join(out_dir, filename), "wb") as file:
-            for chunk in response.iter_content(chunk_size=1024):
-                if chunk:
-                    file.write(chunk)
+        with requests.get(url, stream=True) as response:
+            with open(os.path.join(out_dir, filename), "wb") as f:
+                for chunk in response.iter_content(2 ** 20):
+                    f.write(chunk)
