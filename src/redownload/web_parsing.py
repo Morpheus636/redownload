@@ -6,7 +6,7 @@ import bs4
 from . import exceptions
 
 
-def download_from_url(url: str) -> bs4.BeautifulSoup:
+def html_from_url(url: str) -> bs4.BeautifulSoup:
     """Downloads an HTML page from a url and converts it to a BeautifulSoup object.
 
     :param url: The URL to download HTML from, in a string.
