@@ -23,7 +23,9 @@ def download_from_set(urls: set, out_dir: str) -> None:
     # Download all the URLs in the set to the output dir.
     for url in urls:
         filename = url[url.rfind("/") + 1 : len(url)]
+        print(f"Beginning to download '{filename}'")
         with requests.get(url, stream=True) as response:
             with open(os.path.join(out_dir, filename), "wb") as file:
                 for chunk in response.iter_content(512):
                     file.write(chunk)
+        print(f"Done downloading '{filename}'")
