@@ -1,0 +1,33 @@
+name: Build CLI
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Setup Poetry
+        uses: Gr1N/setup-poetry@v7
+      - name: Install Poetry Packages
+        run: poetry install
+      - name: Build Pyinstaller
+        run: pyinstaller --onefile ./src/redownload_cli.py
+        with:
+          files: |
+            build/redownload_cli
+            build/redownload_cli.app
+            build/redownload_cli.exe
