@@ -1,4 +1,5 @@
 """ The module for HTML parsing related functions. """
+import urllib.parse
 import urllib.request
 
 import bs4
@@ -57,10 +58,9 @@ def extract_links(
     if domains is not None:
         # Add matching links to the correct_links list
         for link in correct_extensions_links:
+            parsed_link = urllib.parse.urlparse(link)
             # if 'link' starts with https://domain or http://domain, add it to correct domains links
-            if any(link.startswith(f"http://{domain}") for domain in domains):
-                correct_domains_links.add(link)
-            if any(link.startswith(f"https://{domain}") for domain in domains):
+            if any(parsed_link.hostname == domain for domain in domains):
                 correct_domains_links.add(link)
     else:
         # Add all links to the correct_domains_links list if extensions is an empty list

@@ -1,10 +1,13 @@
+import urllib.parse
+
 from . import downloads, exceptions, web_parsing
 
 
 def redownload(link, filetypes, output_dir):
-    if link.startswith("https://archive.org"):
+    parsed_link = urllib.parse.urlparse(link)
+    if parsed_link.hostname == "archive.org":
         final_page = web_parsing.html_from_url(link)
-    elif link.startswith("https://relisten.net"):
+    elif parsed_link.hostname == "relisten.net":
         page = web_parsing.html_from_url(link)
         archive_org_links = web_parsing.extract_links(
             page, filter_relative=True, domains=["archive.org"]
