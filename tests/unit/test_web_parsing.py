@@ -18,6 +18,7 @@ def test_html_from_url():
 
 
 def test_extract_links():
+    # TODO - Test the domain argument.
     page = src.redownload.web_parsing.html_from_url(
         "https://archive.org/details/ptf2021-11-14.litzenberger.sbd.akg414.flac16"
     )
@@ -66,6 +67,26 @@ def test_extract_links():
     assert (
         "https://archive.org/download/ptf2021-11-14.litzenberger.sbd.akg414.flac16/ptf2021-11-14t02_Theme_From_The_Bottom.mp3"
         in links
+    )
+
+    # Test with a domains param and filter_relative True
+    links = src.redownload.web_parsing.extract_links(
+        page, filter_relative=True, domains=["archive.org"]
+    )
+    assert "https://archive.org/about/faqs.php" in links
+    assert (
+        "https://www.facebook.com/sharer/sharer.php?u=https://archive.org/details/ptf2021-11-14.litzenberger.sbd.akg414.flac16"
+        not in links
+    )
+
+    # Test with a domains param and filter_relative False
+    links = src.redownload.web_parsing.extract_links(
+        page, filter_relative=False, domains=["archive.org"]
+    )
+    assert "https://archive.org/about/faqs.php" in links
+    assert (
+        "https://www.facebook.com/sharer/sharer.php?u=https://archive.org/details/ptf2021-11-14.litzenberger.sbd.akg414.flac16"
+        not in links
     )
 
     # Test that an exception will be raised if the provided BS document has no links.
