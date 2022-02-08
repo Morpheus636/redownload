@@ -2,7 +2,7 @@
 name = "redownload"
 version = "0.1.0"
 description = ""
-authors = ["Josh Levin/Morpheus636 <josh@joshinshaker.com>"]
+authors = ["Josh Levin (Morpheus636) <josh@joshinshaker.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8, <3.9"
