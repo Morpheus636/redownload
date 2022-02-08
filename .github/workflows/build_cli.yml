@@ -29,12 +29,11 @@ jobs:
         run: poetry install
 
       - name: Build Pyinstaller
-        run: poetry run pyinstaller --onefile ./src/redownload_cli.py
+        run: poetry run pyinstaller --onefile ./src/redownload_cli.py --name redownload-cli-${{ matrix.os }}
 
       - name: Upload Executables
         uses: softprops/action-gh-release@v0.1.14
         with:
           files: |
-            dist/redownload_cli
-            dist/redownload_cli.app
-            dist/redownload_cli.exe
+            dist/redownload-cli-${{ matrix.os }}
+            dist/redownload-cli-${{ matrix.os }}.exe
