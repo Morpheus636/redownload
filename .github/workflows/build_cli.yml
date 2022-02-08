@@ -27,7 +27,7 @@ jobs:
       - name: Build Pyinstaller
         run: poetry run pyinstaller --onefile ./src/redownload_cli.py
       - name: Upload Executables
-        uses: softprops/action-gh-release
+        uses: softprops/action-gh-release@v0.1.14
         with:
           files: |
             build/redownload_cli
