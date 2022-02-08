@@ -30,3 +30,9 @@ class InvalidOutputDir(DownloadsException):
     """The output directory specified in downloads.download_from_set is invalid and cannot be used."""
 
     pass
+
+
+class InvalidInput(RedownloadException):
+    """The user provided an input through stdin that is invalid."""
+
+    pass

@@ -8,7 +8,7 @@ Instructions for downloading it and using it are as follows:
 - Open a terminal
 - `cd` into the directory containing the `redownload-cli-linux` file
 - run `chmod +x ./redownload-cli-linux`
-- you can now run the file with `./redownload-cli-linux <archive.org link>`. This will download all the .mp3's and .flac's
+- you can now run the file with `./redownload-cli-linux <archive.org OR relisten.net link>`. This will download all the .mp3's and .flac's
 to `./redownloads/`
 - if you need more options, you can run `./redownload-cli-linux --help` and it will print the help to the console.
 
@@ -16,14 +16,14 @@ to `./redownloads/`
 - Open a terminal
 - `cd` into the directory containing the `redownload-cli-mac` file.
 - run `chmod +x ./redownload-cli-mac`
-- you can now run the file with `./redownload-cli-mac <archive.org link>`. This will download all the .mp3's and .flac's
+- you can now run the file with `./redownload-cli-mac <archive.org OR relisten.net link>`. This will download all the .mp3's and .flac's
 to `./redownloads/`
 - if you need more options, you can run `./redownload-cli-linux --help` and it will print the help to the console.
 
 ## Windows
 - Open cmd.exe
 - `cd` into the directory containing the `redownload-cli-windows.exe` file.
-- run the file with `redownload-cli-windows <archive.org link`. This will download all the .mp3's and .flac's
+- run the file with `redownload-cli-windows <archive.org OR relisten.net link`. This will download all the .mp3's and .flac's
 to a subdirectory of your working directory called `redownloads`
 - if you need more options, you can run `./redownload-cli-windows --help` and it will print the help to the console.
 
