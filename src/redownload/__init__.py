@@ -20,7 +20,7 @@ def redownload(link, filetypes, output_dir):
             archive_org_links = list(archive_org_links)
             for link in archive_org_links:
                 print(f"{archive_org_links.index(link)}:    {link}")
-            correct_link_number = input(
+            correct_link_number = input(  # FIXME - This shouldn't ask for input on it's own.
                 "Enter the number corresponding to the correct archive.org link: "
             )
             # Get the link with the number the user specified, or error out.
