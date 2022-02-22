@@ -5,7 +5,7 @@ description = ""
 authors = ["Josh Levin (Morpheus636) <josh@joshinshaker.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8, <3.9"
+python = "^3.9, <3.11"
 beautifulsoup4 = "^4.10.0"
 requests = "^2.27.1"
 
@@ -19,7 +19,7 @@ pyinstaller = "^4.9"
 
 [tool.black]
 line-length = 100
-target-version = ['py38']
+target-version = ['py39']
 include = '\.pyi'
 
 [tool.isort]
