@@ -1,0 +1,22 @@
+name: Push to Git Mirrors
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      
+      - name: Add SSH Private Key
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > "~/.ssh/id_rsa_github"
+      
+      - name: Add Gitlab Repo as Remote
+        run: git remote add gitlab git@gitlab.com:morpheus636/${{github.event.repository.name}}.git
+      
+      - name: Push changes to Gitlab
+        run: git push gitlab
