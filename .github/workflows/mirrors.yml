@@ -4,7 +4,7 @@ on:
   push
 
 jobs:
-  build:
+  Mirror:
     runs-on: ubuntu-latest
 
     steps:
@@ -13,7 +13,9 @@ jobs:
       
       - name: Add SSH Private Key
         run: |
-          echo "${{ secrets.SSH_KEY }}" > "~/.ssh/id_rsa_github"
+          file="~/.ssh/id_rsa_github"
+          touch $file
+          echo "${{ secrets.SSH_KEY }}" > "$file"
       
       - name: Add Gitlab Repo as Remote
         run: git remote add gitlab git@gitlab.com:morpheus636/${{github.event.repository.name}}.git
