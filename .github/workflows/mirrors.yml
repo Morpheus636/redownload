@@ -13,13 +13,20 @@ jobs:
       
       - name: Add SSH Private Key
         run: |
-          file="$HOME/.ssh/id_rsa_github"
-          mkdir $HOME/.ssh
-          touch $file
-          echo "${{ secrets.SSH_KEY }}" > "$file"
+          mkdir -p /home/runner/.ssh
+          ssh-keyscan gitlab.com >> /home/runner/.ssh/known_hosts
+          echo "${{ secrets.SSH_KEY }}" > /home/runner/.ssh/github_actions
+          chmod 600 /home/runner/.ssh/github_actions
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null   
+          ssh-add /home/runner/.ssh/github_actions
       
       - name: Add Gitlab Repo as Remote
-        run: git remote add gitlab git@gitlab.com:morpheus636/${{github.event.repository.name}}.git
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub actions"
+          git remote add gitlab git@gitlab.com:morpheus636/${{github.event.repository.name}}.git
       
       - name: Push changes to Gitlab
-        run: git push gitlab
+        run: yes | git push gitlab
