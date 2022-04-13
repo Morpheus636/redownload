@@ -11,14 +11,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       
-      - name: Add SSH Private Key
-        run: |
-          mkdir -p /home/runner/.ssh
-          ssh-keyscan gitlab.com >> /home/runner/.ssh/known_hosts
-          echo "${{ secrets.SSH_KEY }}" > /home/runner/.ssh/github_actions
-          chmod 600 /home/runner/.ssh/github_actions
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null   
-          ssh-add /home/runner/.ssh/github_actions
+      - name: Setup SSH Key
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+            ssh-private-key: ${{ secrets.SSH_KEY }}
       
       - name: Add Gitlab Repo as Remote
         env:
