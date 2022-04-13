@@ -14,7 +14,7 @@ jobs:
       - name: Add SSH Private Key
         run: |
           file="$HOME/.ssh/id_rsa_github"
-          mkdir $HOME
+          mkdir $HOME/.ssh
           touch $file
           echo "${{ secrets.SSH_KEY }}" > "$file"
       
