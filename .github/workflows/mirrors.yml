@@ -17,6 +17,6 @@ jobs:
         run: |
           git config --global user.email "floydaroo@gmail.com"
           git config --global user.name "Automated"
-          git remote add gitlab "https://oauth2:${token}@gitlab.com/morpheus636/redownload.git"
+          git remote add gitlab "https://morpheus636:${token}@gitlab.com/morpheus636/redownload.git"
           git push gitlab
     
