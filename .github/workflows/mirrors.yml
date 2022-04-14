@@ -11,18 +11,14 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       
-      - name: Setup SSH Key
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-            ssh-private-key: ${{ secrets.SSH_KEY }}
-      
       - name: Add Gitlab Repo as Remote
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          token: ${{ secrets.GITLAB_TOKEN }}
         run: |
           git config --global user.email "floydaroo@gmail.com"
           git config --global user.name "Automated"
-          git remote add gitlab git@gitlab.com:morpheus636/redownload.git
+          git remote set-url gitlab "https://oauth2:${}@gitlab.com.morpheus636/redownload.git"
+          git push gitlab
       
       - name: Push changes to Gitlab
         run: yes | git push gitlab
