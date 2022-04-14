@@ -21,4 +21,4 @@ jobs:
           git push gitlab
       
       - name: Push changes to Gitlab
-        run: yes | git push gitlab
+        run: git push gitlab
