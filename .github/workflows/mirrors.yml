@@ -19,6 +19,4 @@ jobs:
           git config --global user.name "Automated"
           git remote add gitlab "https://oauth2:${token}@gitlab.com/morpheus636/redownload.git"
           git push gitlab
-      
-      - name: Push changes to Gitlab
-        run: git push gitlab
+    
