@@ -1,2 +1,1 @@
-build_version = "SOURCE"
-build_commit_id = "SOURCE"
+build_version = "RUNNING AS SOURCE"

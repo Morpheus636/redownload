@@ -19,7 +19,6 @@ def main():
     url = args.url
     if args.version:
         print(f"Build Version: {redownload.version.build_version}")
-        print(f"Build Commit ID: {redownload.version.build_commit_id}")
         sys.exit()
     elif args.url is not None:
         if args.output_dir is not None:
