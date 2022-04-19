@@ -19,3 +19,7 @@ This project uses Poetry for dependency management.
    `curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -`
 3) Run `poetry install` to install of the project's dependencies.
 4) Run `poetry run pre-commit install` to install the project's pre-commit hooks.
+
+# Building From Source
+1. Setup a development environment as described above.
+2. Run `make build`
