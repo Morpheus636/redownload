@@ -1,5 +1,6 @@
 import argparse
 import os
+import sys
 
 import redownload
 
@@ -12,10 +13,15 @@ def main():
     parser.add_argument(
         "-o", "--output_dir", help="Specify the directory to save the downloaded audio files to."
     )
+    parser.add_argument("-v", "--version", help="Print Redownload's version information.")
     args = parser.parse_args()
 
     url = args.url
-    if args.url is not None:
+    if args.version:
+        print(f"Build Version: {redownload.version.build_version}")
+        print(f"Build Commit ID: {redownload.version.build_commit_id}")
+        sys.exit()
+    elif args.url is not None:
         if args.output_dir is not None:
             output_dir = args.output_dir
         else:
