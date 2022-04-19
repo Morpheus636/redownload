@@ -1,6 +1,6 @@
 import urllib.parse
 
-from . import downloads, exceptions, web_parsing
+from . import downloads, exceptions, version, web_parsing
 
 
 def redownload(link, filetypes, output_dir):
