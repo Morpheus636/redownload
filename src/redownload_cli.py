@@ -13,7 +13,9 @@ def main():
     parser.add_argument(
         "-o", "--output_dir", help="Specify the directory to save the downloaded audio files to."
     )
-    parser.add_argument("-v", "--version", help="Print Redownload's version information.")
+    parser.add_argument(
+        "-v", "--version", action="store_true", help="Print Redownload's version information."
+    )
     args = parser.parse_args()
 
     url = args.url
