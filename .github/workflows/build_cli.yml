@@ -28,8 +28,25 @@ jobs:
       - name: Install Poetry Packages
         run: poetry install
 
-      - name: Build Pyinstaller
-        run: poetry run pyinstaller --onefile ./src/redownload_cli.py --name redownload-cli-${{ matrix.os[1] }}
+      - name: Run Build Script
+        run: make build
+
+      - name: Rename Executables
+        run: |
+          # If dist/redownload-cli exists, rename it dist/redownload-cli-${{ matrix.os[1] }}
+          FILE='./dist/redownload-cli'
+          FILE_WITH_PLATFORM="./dist/redownload-cli-${{ matrix.os[1] }}"
+          if [ -f "$FILE" ]; then
+            mv $FILE $FILE_WITH_PLATFORM
+          fi
+
+          # If dist/redownload-cli.exe exists, rename it dist/redownload-cli-${{ matrix.os[1] }}.exe
+          FILE='./dist/redownload-cli.exe'
+          FILE_WITH_PLATFORM="./dist/redownload-cli-${{ matrix.os[1] }}.exe"
+          if [ -f "$FILE" ]; then
+            mv $FILE $FILE_WITH_PLATFORM
+          fi
+        shell: bash
 
       - name: Upload Executables
         uses: softprops/action-gh-release@v0.1.14
