@@ -44,7 +44,16 @@ def test_download_from_set():
     with pytest.raises(src.redownload.exceptions.InvalidOutputDir):
         src.redownload.downloads.download_from_set(url_set, output_dir)
     shutil.rmtree(output_dir, ignore_errors=True)
-    os.remove(output_dir)
+
+    # Test that it raises an exception if you download the same file twice.
+    if os.path.isfile(output_dir):
+        os.remove(output_dir)
+    if not os.path.isdir(output_dir):
+        os.mkdir(output_dir)
+    src.redownload.downloads.download_from_set(url_set, output_dir)
+    with pytest.raises(FileExistsError):
+        src.redownload.downloads.download_from_set(url_set, output_dir)
+    shutil.rmtree(output_dir, ignore_errors=True)
 
     # Multi-URL Tests.
     correct_filepaths = [
