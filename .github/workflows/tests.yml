@@ -8,7 +8,10 @@ on:
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os[0]}}
+    strategy:
+      matrix:
+        os: [[ubuntu-latest, linux], [windows-latest, windows], [macos-latest, mac]]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
