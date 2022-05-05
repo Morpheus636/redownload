@@ -30,7 +30,7 @@ jobs:
   
       - name: Black (Code Formatter)
         run: poetry run black src/ tests/
-  
+
       - name: Check for changes
         id: changes
         uses: UnicornGlobal/has-changes-action@v1.0.11
