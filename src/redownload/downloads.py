@@ -25,7 +25,7 @@ def download_from_set(urls: set, out_dir: str) -> None:
     for url in urls:
         filename = url[url.rfind("/") + 1 : len(url)]
         print(f"Beginning to download '{filename}'")
-        with requests.get(url, stream=True, cert=certifi.where()) as response:
+        with requests.get(url, stream=True) as response:
             with open(os.path.join(out_dir, filename), "xb") as file:
                 for chunk in response.iter_content(512):
                     file.write(chunk)
