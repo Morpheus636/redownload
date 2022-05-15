@@ -3,6 +3,7 @@ import urllib.parse
 import urllib.request
 
 import bs4
+import certifi  # To fix SSL issue from issue #31
 
 from . import exceptions
 
@@ -13,7 +14,7 @@ def html_from_url(url: str) -> bs4.BeautifulSoup:
     :param url: The URL to download HTML from, in a string.
     :return: BeautifulSoup object extracted from the url.
     """
-    request = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla"}))
+    request = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla"}), cafile=certifi.where())
     html_doc = request.read()
     html_soup = bs4.BeautifulSoup(html_doc, features="html.parser")
     return html_soup
