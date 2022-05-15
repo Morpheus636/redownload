@@ -3,6 +3,7 @@ import urllib.parse
 import urllib.request
 
 import bs4
+import certifi  # To fix SSL issue from issue #31
 
 from . import exceptions
 
