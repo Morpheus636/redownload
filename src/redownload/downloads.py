@@ -1,6 +1,5 @@
 import os
 
-import certifi # To fix SSL issue from issue #31
 import requests
 
 from . import exceptions
