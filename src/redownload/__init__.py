@@ -1,9 +1,11 @@
 import urllib.parse
 
-from . import downloads, exceptions, version, web_parsing
+from . import config, downloads, exceptions, version, web_parsing
 
 
-def redownload(link, filetypes, output_dir):
+def redownload(
+    link, filetypes=config.config["track_formats"], output_dir=config.config["output_dir"]
+):
     parsed_link = urllib.parse.urlparse(link)
     if parsed_link.hostname == "archive.org":
         final_page = web_parsing.html_from_url(link)

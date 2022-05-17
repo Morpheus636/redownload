@@ -5,7 +5,7 @@ import yaml
 
 
 # Set the IS_UNIX constant to true or false based on the platform
-if platform.system() == "linux" or platform.system() == "darwin":
+if platform.system() == "Linux" or platform.system() == "Darwin":
     IS_UNIX = True
 else:
     IS_UNIX = False
@@ -13,9 +13,11 @@ else:
 
 # Set the LOCATION constant
 if not IS_UNIX:
-    LOCATION = os.path.join(os.getenv("APPDATA"), "redownload", "config.yml")
+    CONFIG_DIR = os.path.join(os.getenv("APPDATA"), "redownload")
+    LOCATION = os.path.join(CONFIG_DIR, "config.yml")
 elif IS_UNIX:
-    LOCATION = os.path.join(os.getenv("HOME"), ".config", "redownload", "config.yml")
+    CONFIG_DIR = os.path.join(os.getenv("HOME"), ".config", "redownload")
+    LOCATION = os.path.join(CONFIG_DIR, "config.yml")
 
 
 def create_default() -> None:
@@ -39,7 +41,9 @@ def create_default() -> None:
 
     default_config = {"output_dir": output_dir, "track_formats": [".flac", ".mp3"]}
 
-    with open(LOCATION, "w") as stream:
+    # Save the default config to the file
+    os.makedirs(CONFIG_DIR, exist_ok=True)
+    with open(LOCATION, "w+") as stream:
         yaml.safe_dump(default_config, stream)
 
 
