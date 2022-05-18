@@ -1,5 +1,3 @@
-<img src="https://raw.githubusercontent.com/CodeShady/redownload/main/logo.png" />
-
 # Redownload
 <a href="https://discord.morpheus636.com"><img src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white" /></a><a href="https://github.com/Morpheus636/redownload"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" /></a>
 <a href="https://www.python.org"><img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=white"></a>
@@ -30,4 +28,4 @@ To contribute to this project, view the Contribution Docs found in [CONTRIBUTING
 
 ---
 
-Custom Badges by <a href="https://ileriayo.github.io/markdown-badges/">markdown-badges</a>
+### Custom Badges by <a href="https://ileriayo.github.io/markdown-badges/">markdown-badges</a>
