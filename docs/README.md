@@ -26,6 +26,5 @@ To ask a question or get support, you can join my [Discord Server](https://disco
 ## Contributing
 To contribute to this project, view the Contribution Docs found in [CONTRIBUTING.md](CONTRIBUTING.md)
 
----
-
-### Custom Badges by <a href="https://ileriayo.github.io/markdown-badges/">markdown-badges</a>
+## Credits
+Custom Badges by <a href="https://ileriayo.github.io/markdown-badges/">markdown-badges</a>
