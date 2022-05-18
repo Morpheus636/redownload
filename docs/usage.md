@@ -39,6 +39,6 @@ to a subdirectory of your working directory called `redownloads`
 ## <img alt="Help!" src="https://emojis.slackmojis.com/emojis/images/1643514968/9949/blob_help.png?1643514968" width="25" /> Help!
 If you need help or clarification, join me on [Discord](https://discord.morpheus636.com) or, you can open a [GitHub Issue](https://github.com/Morpheus636/redownload/issues).
 
----
 
-### Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+## Credits
+Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
