@@ -20,7 +20,7 @@ elif IS_UNIX:
     LOCATION = os.path.join(CONFIG_DIR, "config.yml")
 
 
-def create_default() -> None:
+def create_default(location=LOCATION) -> None:
     """Create a config file at the correct location with the default values
 
     :return: None
@@ -43,7 +43,7 @@ def create_default() -> None:
 
     # Save the default config to the file
     os.makedirs(CONFIG_DIR, exist_ok=True)
-    with open(LOCATION, "w+") as stream:
+    with open(location, "w+") as stream:
         yaml.safe_dump(default_config, stream)
 
 
