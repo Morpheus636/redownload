@@ -1,5 +1,6 @@
 import os
 import platform
+import typing
 
 import yaml
 
@@ -19,10 +20,26 @@ elif IS_UNIX:
     CONFIG_DIR = os.path.join(os.getenv("HOME"), ".config", "redownload")
     LOCATION = os.path.join(CONFIG_DIR, "config.yml")
 
+# Define the empty config variable to be populated by load()
+config = dict()
+
+
+def dump(config_dict: dict, location=LOCATION) -> None:
+    """Dumps config dict to location using YAML syntax.
+
+    :param config_dict: The dictionary to dump.
+    :param location: The location of the config file. Optional, defaults to LOCATION
+    :return: None
+    """
+    os.makedirs(os.path.dirname(location), exist_ok=True)
+    with open(location, "w+") as stream:
+        yaml.safe_dump(config_dict, stream)
+
 
 def create_default(location=LOCATION) -> None:
     """Create a config file at the correct location with the default values
 
+    :param location: The location of the config file. Optional, defaults to LOCATION
     :return: None
     """
     # Figure out where the default output dir should be
@@ -42,21 +59,42 @@ def create_default(location=LOCATION) -> None:
     default_config = {"output_dir": output_dir, "track_formats": [".flac", ".mp3"]}
 
     # Save the default config to the file
-    os.makedirs(CONFIG_DIR, exist_ok=True)
-    with open(location, "w+") as stream:
-        yaml.safe_dump(default_config, stream)
+    dump(default_config, location=location)
 
 
-def load() -> dict:
+def set_key(key: str, value: typing.Any, location=LOCATION, ignore_invalid: bool = False) -> None:
+    """Sets specified key to equal specified in the config dict, and writes the changes
+    to the config file
+
+    :param key: The key to set.
+    :param value: The value to set the key to.
+    :param location: The location of the config file. Optional, defaults to LOCATION
+    :param ignore_invalid: If true, the function will add a key to the config file if it doesn't already exist.
+    Otherwise, will raise a KeyError. Optional, defaults to False.
+    :return None:
+    """
+    global config
+    if key not in config.keys() and ignore_invalid is False:
+        raise KeyError("The config key specified does not exist.")
+    else:
+        config[key] = value
+        dump(config, location=location)
+
+
+def load(location=LOCATION) -> dict:
     """Load the config file from LOCATION and return it as a dict.
 
+    :param location: The location of the config file. Optional, defaults to LOCATION
     :return: Config dict
     """
+    global config
     if not os.path.exists(LOCATION):
         create_default()
-    with open(LOCATION, "r") as stream:
+    with open(location, "r") as stream:
         loaded_config = yaml.safe_load(stream)
+    config = loaded_config
     return loaded_config
 
 
-config = load()
+# Load config
+load()
