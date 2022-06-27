@@ -1,8 +1,5 @@
 # Redownload
-<a href="https://discord.morpheus636.com"><img src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white" /></a><a href="https://github.com/Morpheus636/redownload"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" /></a>
-<a href="https://www.python.org"><img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=white"></a>
-
-A python based utility for downloading mp3 files from [Relisten](https://relisten.net).
+A python based utility for downloading mp3 files from relisten.
 
 ## Features
 - Download music from Relisten and Archive.org automatically
@@ -25,6 +22,3 @@ To ask a question or get support, you can join my [Discord Server](https://disco
 
 ## Contributing
 To contribute to this project, view the Contribution Docs found in [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## Credits
-Custom Badges by <a href="https://ileriayo.github.io/markdown-badges/">markdown-badges</a>
