@@ -20,8 +20,7 @@ For instructions on downloading and using Redownload, see the [usage documentati
 ## Contact
 To submit a Bug Report or Feature Request, please open a [GitHub Issue](https://github.com/Morpheus636/redownload/issues/new).
 
-To ask a question or get support, you can join my [Discord Server](https://discord.morpheus636.com) or ask in the Redownload section of my 
-[Forums](https://forums.morpheus636.com)
+To ask a question or get support, you can join my [Discord Server](https://discord.morpheus636.com) or create a Discussions thread within this repository.
 
 ## Contributing
 To contribute to this project, view the Contribution Docs found in [CONTRIBUTING.md](CONTRIBUTING.md)
