@@ -10,23 +10,23 @@ A python based utility for downloading mp3 files from [Relisten](https://reliste
 - Simple install process and usage
 - Free and Open-Source
 
-## Built Using
+## Technologies
 - Python 3
 - PyInstaller
 
-## Installing and Using Redownload
+## Usage
 For instructions on downloading and using Redownload, see the [usage documentation page](usage.md)
 
 ## Contact
-To submit a Bug Report or Feature Request, please open a [GitHub Issue](https://github.com/Morpheus636/redownload/issues/new).
+To submit a Bug Report or Feature Request, please open a GitHub Issue in this repository
 
 To ask a question or get support, you can join my [Discord Server](https://discord.morpheus636.com) or create a Discussions thread within this repository.
 
 ## Contributing
-To contribute to this project, view the Contribution Docs found in [CONTRIBUTING.md](CONTRIBUTING.md)
+This project is maintained my Morpheus636. Contribution guidelines for all of my projects can be found at https://docs.morpheus636.com/contributing
 
 ## Credits
-Custom Badges by <a href="https://ileriayo.github.io/markdown-badges/">markdown-badges</a>
+- Custom Badges by <a href="https://ileriayo.github.io/markdown-badges/">markdown-badges</a>
 
 # Copyright Notice
 © Copyright 2021-2022 Josh Levin ([Morpheus636](https://github.com/morpheus636))
